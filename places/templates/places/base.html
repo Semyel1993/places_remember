@@ -1,0 +1,26 @@
+{% load compress %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Remember Places</title>
+
+    {% compress css %}
+        <link href="{% static './src/output.css' %}" rel="stylesheet">
+    {% endcompress %}
+</head>
+
+<body>
+    <div class="flex-container flex h-screen justify-center items-center">
+        {% block content %}
+        {% endblock content %}
+    </div>
+</body>
+
+</html>
