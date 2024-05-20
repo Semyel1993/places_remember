@@ -4,10 +4,9 @@ from django.db import models
 
 class CustomUser(AbstractUser):
     vk_id = models.BigIntegerField(unique=True, blank=True, null=True)
-    avatar = models.ImageField(
+    avatar = models.CharField(
         max_length=255,
-        verbose_name='Аватар пользователя',
-        upload_to='avatars/',
+        verbose_name='Ссылка на аватар пользователя',
         blank=True,
     )
 

@@ -1,7 +1,8 @@
 const VKID = window.VKIDSDK;
 
+
 VKID.Config.set({
-    app: 51920522, // App identifier.
+    app: process.env.APP_ID, // App identifier.
     redirectUrl: 'http://localhost/auth', // URL to redirect to after authorization.
 });
 
