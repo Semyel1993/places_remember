@@ -11,16 +11,20 @@
 
     <title>Remember Places</title>
 
+    <script src="https://unpkg.com/@vkid/sdk@latest/dist-sdk/umd/index.js"></script>
     {% compress css %}
         <link href="{% static './src/output.css' %}" rel="stylesheet">
     {% endcompress %}
 </head>
 
 <body>
-    <div class="flex-container flex h-screen justify-center items-center">
-        {% block content %}
-        {% endblock content %}
-    </div>
+
+<div class="flex-container flex h-screen justify-center items-center">
+    {% block content %}
+    {% endblock content %}
+</div>
+<script src="/static/auth.js"></script>
+
 </body>
 
 </html>

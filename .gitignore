@@ -98,3 +98,4 @@ dmypy.json
 .idea
 
 ./static/CACHE/
+/data/

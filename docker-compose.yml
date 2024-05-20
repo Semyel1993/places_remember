@@ -3,16 +3,18 @@ services:
     image: postgres
     volumes:
       - ./data/db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
     env_file:
       - .env
 
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:80
     volumes:
       - .:/code
     ports:
-      - "8000:8000"
+      - "80:80"
     env_file:
       - .env
     depends_on:
