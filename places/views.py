@@ -45,14 +45,17 @@ def sign_out(request):
 
 @login_required
 def edit_place(request, place_id=None):
+    print(place_id)
     if place_id:
         place = get_object_or_404(Place, pk=place_id)
-
+        print('if place')
+        print(place)
         if place.author != request.user:
             return HttpResponseForbidden()
     else:
         place = Place(author=request.user)
-
+        print('else place')
+        print(place)
     form = PlaceForm(request.POST or None, instance=place)
     if request.POST and form.is_valid():
         form.save()
