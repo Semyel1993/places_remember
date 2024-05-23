@@ -5,6 +5,7 @@ module.exports = {
       theme: {
           borderRadius: {
               'lg': '2.0rem',
+              'md': '.5rem'
           },
           extend: {
               boxShadow: {

@@ -34,20 +34,19 @@ def auth(request):
 
     access_token = exchange_silent_token.get('access_token')
     user_vk_id = exchange_silent_token.get('user_id')
-
     user_info = requests.get(
         VK_API_URL + 'users.get',
         params={
             'access_token': access_token,
             'v': VK_API_VERSION,
-            'fields': VK_AVATAR
+            'fields': VK_AVATAR + ', screen_name'
         }
     ).json().get('response')[0]
 
     first_name = user_info.get('first_name')
     last_name = user_info.get('last_name')
+    screen_name = user_info.get('screen_name')
     avatar = user_info.get(VK_AVATAR)
-
     try:
         user = CustomUser.objects.get(vk_id=user_vk_id)
         user.first_name = first_name
@@ -56,6 +55,7 @@ def auth(request):
         user.save()
     except CustomUser.DoesNotExist:
         user = CustomUser.objects.create(
+            username=screen_name,
             vk_id=user_vk_id,
             first_name=first_name,
             last_name=last_name,

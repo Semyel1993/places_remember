@@ -3,26 +3,43 @@
 {% block content %}
     <div class="flex-container flex-col w-2/3 h-screen justify-between">
 
-        <header class="flex flex-row justify-between">
-            <div class="flex items-center">
-                <img class="h-10 w-10 rounded-lg" src="{{ avatar }}">
-                <h1 class="px-4">{{ first_name }} {{ last_name }}</h1>
+        {% include "places/header.html" %}
+
+        <main class="flex mt-20 flex-col w-full justify-end items-center">
+            <div class=" w-3/4 h-full pt-6">
+                {% include "places/places_list.html" %}
             </div>
 
-            <div class="flex justify-end align-middle">
-                <a href="{% url 'sign_out' %}">
-                    Выйти
-                </a>
-            </div>
-        </header>
-
-        <main class="flex flex-col w-full justify-center items-center" style="height: calc(100% - 40px)">
-            <div>
-                <h1 class="text-center">No places...</h1>
-            </div>
-            <button class="absolute text-balance w-52 bottom-20 right-5 bg-blue-500 shadow-xl hover:shadow-none text-white font-sans font-semibold text-xl px-6 py-6 rounded-lg inline-flex items-center">
+            <button id="add-memory"
+                    class=" fixed text-balance w-40 bottom-20 right-6 bg-blue-500 shadow-xl hover:shadow-none text-white font-sans px-4 py-4 rounded-md inline-flex text-center items-center">
                 Добавить воспоминание
             </button>
+            
         </main>
+    
+        <div class="overlay fixed hidden z-50 w-full h-full top-0 left-0 bg-black/60">
+            <div class="popup absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-500 rounded-md p-8 w-1/2">
+                <form id="place-form" method="post" class="w-full flex flex-col">
+                    {% csrf_token %}
+
+                    <div class="form-error">{{ form.non_field_errors }}</div>
+
+                    {% for f in form %}
+                        <p>{{ f }}</p>
+                        <div class="form-error">{{ f.errors }}</div>
+                    {% endfor %}
+
+                    <div id="map-container" class="h-80 w-full mb-3" style="border-radius: 4px"></div>
+
+                    <button type="submit"
+                            class="w-2/3 m-auto mt-6 bg-white shadow-xl hover:shadow-none font-sans px-4 py-4 rounded-md inline-flex text-center items-center justify-center">
+                        Сохранить
+                    </button>
+
+                </form>
+            </div>
+        </div>
     </div>
+    <script src="/static/map.js"></script>
+    <script src="/static/popup.js"></script>
 {% endblock content %}

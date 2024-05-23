@@ -1,0 +1,66 @@
+{% extends "places/base.html" %}
+
+{% block content %}
+
+    {% include "places/header.html" %}
+
+    <div class="mb-6 py-6 px-8 grid grid-rows-[80px_200px_80px] grid-cols-2 gap-4">
+
+        <h1 class="col-span-2 text-4xl font-bold flex justify-center items-center">{{ place.name }}</h1>
+
+        <p class="">{{ place.description }}</p>
+
+        <div id="detailMap" class="show-map z-0 rounded-md"
+             latitude={{ place.latitude }} longitude={{ place.longitude }}></div>
+
+    </div>
+
+    <button id="edit-place"
+            class="fixed w-40 bottom-20 right-6 bg-blue-500 shadow-xl hover:shadow-none text-white font-sans px-4 py-4 rounded-md inline-flex text-center items-center justify-center">
+        Редактировать
+    </button>
+
+    <script>
+        $('#edit-place').on('click', function () {
+            $('.overlay').fadeIn()
+        })
+
+        $('.close-popup').on('click', function () {
+            $('.overlay').fadeOut()
+        })
+
+        $(document).on('mousedown', function (e) {
+            let htmlPopup = $('.popup');
+            if (e.target != htmlPopup[0] && htmlPopup.has(e.target).length === 0) {
+                $('.overlay').fadeOut();
+            }
+        });
+    </script>
+
+    <div class="overlay fixed hidden z-50 w-full h-full top-0 left-0 bg-black/60">
+        <div class="popup absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-500 rounded-md p-8 w-1/2">
+
+            <form action="{% url 'edit_place' place.id %}" method="post" class="w-full flex flex-col">
+                {% csrf_token %}
+
+                <div class="form-error">{{ form.non_field_errors }}</div>
+
+                {% for f in form %}
+                    <p>{{ f }}</p>
+                    <div class="form-error">{{ f.errors }}</div>
+                {% endfor %}
+
+                <div id="map-container" class="map-container h-80 w-full mb-3 rounded-md"
+                     latitude={{ place.latitude }} longitude={{ place.longitude }}></div>
+
+                <button type="submit"
+                        class="w-2/3 m-auto mt-6 bg-white shadow-xl hover:shadow-none font-sans px-4 py-4 rounded-md inline-flex text-center items-center justify-center">
+                    Изменить
+                </button>
+            </form>
+
+        </div>
+    </div>
+    <script src="/static/map.js"></script>
+
+{% endblock content %}
