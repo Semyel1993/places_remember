@@ -1,6 +1,14 @@
-$('#add-memory, #edit-place').on('click', function () {
+$('#add-memory').on('click', function () {
     $('.overlay').fadeIn()
+    formCreate()
+
 })
+
+$('#edit-place').on('click', function () {
+    $('.overlay').fadeIn()
+    formEdit()
+})
+
 
 $('.close-popup').on('click', function () {
     $('.overlay').fadeOut()

@@ -566,6 +566,10 @@ video {
   position: absolute;
 }
 
+.bottom-14 {
+  bottom: 3.5rem;
+}
+
 .bottom-20 {
   bottom: 5rem;
 }
@@ -578,12 +582,12 @@ video {
   left: 50%;
 }
 
-.right-5 {
-  right: 1.25rem;
+.right-12 {
+  right: 3rem;
 }
 
-.right-6 {
-  right: 1.5rem;
+.right-5 {
+  right: 1.25rem;
 }
 
 .top-0 {
@@ -675,6 +679,10 @@ video {
   height: 4rem;
 }
 
+.h-2\/3 {
+  height: 66.666667%;
+}
+
 .h-80 {
   height: 20rem;
 }
@@ -711,9 +719,8 @@ video {
   width: 100%;
 }
 
-.w-fit {
-  width: -moz-fit-content;
-  width: fit-content;
+.min-w-80 {
+  min-width: 20rem;
 }
 
 .-translate-x-1\/2 {
@@ -730,44 +737,8 @@ video {
   grid-template-columns: auto 140px;
 }
 
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
 .grid-rows-\[40px_120px_40px\] {
   grid-template-rows: 40px 120px 40px;
-}
-
-.grid-rows-3 {
-  grid-template-rows: repeat(3, minmax(0, 1fr));
-}
-
-.grid-rows-\[px_120px_40px\] {
-  grid-template-rows: px 120px 40px;
-}
-
-.grid-rows-\[80px_120px_40px\] {
-  grid-template-rows: 80px 120px 40px;
-}
-
-.grid-rows-\[80px_120px_px\] {
-  grid-template-rows: 80px 120px px;
-}
-
-.grid-rows-\[80px_120px_80px\] {
-  grid-template-rows: 80px 120px 80px;
-}
-
-.grid-rows-\[80px_px_80px\] {
-  grid-template-rows: 80px px 80px;
-}
-
-.grid-rows-\[80px_600px_80px\] {
-  grid-template-rows: 80px 600px 80px;
-}
-
-.grid-rows-\[80px_200px_80px\] {
-  grid-template-rows: 80px 200px 80px;
 }
 
 .flex-row {
@@ -776,10 +747,6 @@ video {
 
 .flex-col {
   flex-direction: column;
-}
-
-.content-center {
-  align-content: center;
 }
 
 .items-center {
@@ -798,12 +765,8 @@ video {
   justify-content: space-between;
 }
 
-.justify-around {
-  justify-content: space-around;
-}
-
-.justify-items-center {
-  justify-items: center;
+.gap-12 {
+  gap: 3rem;
 }
 
 .gap-16 {
@@ -869,6 +832,11 @@ video {
   padding: 2rem;
 }
 
+.px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -920,14 +888,14 @@ video {
   line-height: 2.25rem;
 }
 
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .font-bold {

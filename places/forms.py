@@ -1,4 +1,5 @@
 from django import forms
+from django.core.exceptions import ValidationError
 
 from places.models import Place
 
@@ -22,10 +23,10 @@ class PlaceForm(forms.ModelForm):
                 }),
             'latitude': forms.NumberInput(
                 attrs={
-                    'style': 'display: none;'
+                    'class': 'hidden',
                 }),
             'longitude': forms.NumberInput(
                 attrs={
-                    'style': 'display: none;'
+                    'class': 'hidden',
                 }),
         }
