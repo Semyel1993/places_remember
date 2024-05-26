@@ -2,10 +2,9 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseForbidden
-from django.shortcuts import get_object_or_404, redirect, render, reverse
-from dotenv import load_dotenv
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views import generic
-from django.contrib import messages
+from dotenv import load_dotenv
 
 from accounts.models import CustomUser
 from places.forms import PlaceForm
